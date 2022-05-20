@@ -2,10 +2,10 @@ from osgeo import gdal, osr
 import cv2
 import numpy as np
 
-def normalize_scene(RAW_SCENES_LIST)
+def normalize_scene(input_dir,RAW_SCENES_LIST, output_dir, BANDS):
     driver = gdal.GetDriverByName('GTiff')
     for scene_name in RAW_SCENES_LIST:
-        scene = gdal.Open(SCENES_DIR+scene_name)
+        scene = gdal.Open(input_dir+scene_name)
         driver.Register()
         raster_X_size = scene.RasterXSize
         raster_Y_size = scene.RasterYSize
@@ -19,7 +19,7 @@ def normalize_scene(RAW_SCENES_LIST)
         scene = cv2.normalize(scene, scene, 0, 1, cv2.NORM_MINMAX, cv2.CV_32F)
         # Create new tif
         driver = gdal.GetDriverByName('GTiff')
-        tif_file = driver.Create(NORMALIZED_DIR+scene_name, 
+        tif_file = driver.Create(output_dir+scene_name, 
                                  raster_X_size, 
                                  raster_Y_size, 
                                  BANDS, 
