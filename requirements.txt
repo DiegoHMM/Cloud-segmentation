@@ -1,0 +1,8 @@
+GDAL==3.4.3
+keras==2.11.0
+numpy==1.24.1
+opencv_python==4.7.0.68
+osgeo==0.0.1
+scikit_learn==1.2.0
+tensorflow==2.11.0
+tensorflow_intel==2.11.0
